@@ -1,12 +1,13 @@
 import time
 import datetime
-
+import ellinka
 
 # time.asctime() = Wed Jun  5 23:18:04 2019
-# datetime.datetime.now = 2019-06-05 23:19:25.613302
+# datetime.dat      etime.now = 2019-06-05 23:19:25.613302
 
 class Study_Assistant: 
     
+    start = time.time()
 
 
     #start = time.time()
@@ -14,11 +15,13 @@ class Study_Assistant:
     #print(end - start)
     
     def begin_reading(self):
+        
+        # istedenfor å bruke tiden nå, lag et timedeltaobjekt som som teller ned 
         start_time = datetime.datetime.now()  
         
         study_interval = datetime.timedelta(minutes=25)
         break_interval = datetime.timedelta(minutes=5)
-
+            
 
         end_time = start_time + study_interval
 
@@ -26,6 +29,10 @@ class Study_Assistant:
         print("Time is now", start_time)
         print("Following the Pomodro Technique, next break is at: ", start_time + study_interval)
         finished_reading = "false"
+
+        #TO DO:
+        # Add a break interval of 30 minutes after 4 cycles of studying  
+
         while not finished_reading == "true":
             start_time = datetime.datetime.now()
             end_time = start_time + study_interval
@@ -37,6 +44,7 @@ class Study_Assistant:
             if finished_reading == "true":
                 break
             print("Time to take a five minute brake")
+            print("I suggest standing up and doing some stretches")
 
             start_time = datetime.datetime.now()
             end_time = start_time + break_interval
@@ -44,6 +52,7 @@ class Study_Assistant:
             self.begin_break_interval(start_time, end_time)
             print("="*25)
             print("Suit up! Its time to continue reading!")
+            print("start time", self.start)
             print("="*25)
   
 
